@@ -1,17 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const nombre = 'Marvin';
+const color ='Blue';
+const sesion =true;
+const pais = 'El Salvador';
+const amigos = ['Javier','Evelyn','Danilo'];
+
+//Haciendo uso del operador ternario para manejar condicionales con JSX
+const JSX=(
+  <>
+      {sesion === true ? 
+      <>
+        <h1 className="titulo" style={{color:color}}>Hola, {nombre}</h1>
+        <p>Tenga un buen dia</p>
+        {pais &&  <p>Tu eres de: {pais}</p>} 
+        <ul>
+          {amigos.map((amigo,index)=> <li key={index}>{amigo}</li>)}
+        </ul>
+      </>
+       : 
+       <p>No has iniciado sesion</p>}
+      
+  </>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const verificarSesion =sesion=>{
+//   if(sesion === true){
+//     return JSX;
+//   }
+//   else{
+//     return <h1>No has inciado sesion.</h1>
+//   }
+// }
+
+// ReactDOM.render(
+//   verificarSesion(sesion),
+//   document.getElementById('root')
+// );
+
+ReactDOM.render(
+  JSX,
+  document.getElementById('root')
+);
